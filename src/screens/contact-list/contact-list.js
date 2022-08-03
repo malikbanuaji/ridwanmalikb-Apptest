@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {AlertModal} from '../../components';
 import {
   fetchAllContact,
   selectAllContact,
 } from '../../features/contact/contactSlice';
 import colors from '../../theme/colors';
 import ContactItem from './contact-item';
-import ModalContent from './modal-content';
 
 const ContactList = ({navigation}) => {
   const [loading, setLoading] = useState(false);

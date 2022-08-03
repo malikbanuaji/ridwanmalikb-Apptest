@@ -1,38 +1,29 @@
+import {useRoute} from '@react-navigation/native';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {Controller, useForm} from 'react-hook-form';
 import {
   Alert,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
+  ToastAndroid,
   View,
 } from 'react-native';
-import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {Controller, useForm} from 'react-hook-form';
-import colors from '../../theme/colors';
-import fontSize from '../../typography/fontSize';
-import {Pressable, ProfilePicture, Button} from '../../components';
 import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {useRoute} from '@react-navigation/native';
-import {contactAPI} from '../../api/client';
-import Constants from '../../constants/constants';
-import ProfileText from '../../components/profile-picture/profile-text';
 import {useDispatch} from 'react-redux';
-import {
-  deleteContact,
-  fetchAllContact,
-} from '../../features/contact/contactSlice';
+import {contactAPI} from '../../api/client';
+import {Button, Pressable, ProfilePicture} from '../../components';
+import ProfileText from '../../components/profile-picture/profile-text';
+import Constants from '../../constants/constants';
+import {fetchAllContact} from '../../features/contact/contactSlice';
+import colors from '../../theme/colors';
+import fontSize from '../../typography/fontSize';
 
 const ErrorMessage = ({name, errors}) => {
   return (
-    <Text
-      style={{
-        color: '#ff3800',
-        fontSize: fontSize.small,
-        letterSpacing: 0.1,
-      }}>
+    <Text style={styles.errorMessageText}>
       {errors[name] && errors[name].message}
     </Text>
   );
@@ -137,7 +128,6 @@ const ContactAdd = ({navigation}) => {
   const contactDetail = useRef();
 
   const userId = route.params?.id;
-  const userIndex = route.params?.index;
   const navigationType = route.params?.type;
   const {firstName, lastName} = watch();
 
@@ -175,10 +165,12 @@ const ContactAdd = ({navigation}) => {
         ...data,
         photo: data.photo ? data.photo : 'N/A',
       });
+      ToastAndroid.show('Contact saved', ToastAndroid.SHORT);
       dispatch(fetchAllContact());
       navigation.goBack();
     } catch (error) {
       // ignore error
+      ToastAndroid.show('Failed to update contact', ToastAndroid.SHORT);
     } finally {
       setLoading(false);
     }
@@ -191,22 +183,26 @@ const ContactAdd = ({navigation}) => {
         ...data,
         photo: data.photo ? data.photo : 'N/A',
       });
+      ToastAndroid.show('New contact has been added', ToastAndroid.SHORT);
       dispatch(fetchAllContact());
       navigation.goBack();
     } catch (error) {
       // ignore error
+      ToastAndroid.show('Failed to add new contact', ToastAndroid.SHORT);
     } finally {
       setLoading(false);
     }
   };
 
-  const _deleteAddContact = async () => {
+  const _deleteContact = async () => {
     setLoading(true);
     try {
       await contactAPI.deleteContact(userId);
+      ToastAndroid.show('Contact deleted', ToastAndroid.SHORT);
       dispatch(fetchAllContact());
       navigation.goBack();
     } catch (error) {
+      ToastAndroid.show('Failed to delete contact', ToastAndroid.SHORT);
       // ignore error
     } finally {
       setLoading(false);
@@ -347,7 +343,7 @@ const ContactAdd = ({navigation}) => {
                           {text: 'CANCEL'},
                           {
                             text: 'YES',
-                            onPress: _deleteAddContact,
+                            onPress: _deleteContact,
                           },
                         ],
                         {cancelable: false},
@@ -426,5 +422,10 @@ const styles = StyleSheet.create({
     fontSize: fontSize.normal,
     color: colors.grey,
     textAlign: 'center',
+  },
+  errorMessageText: {
+    color: '#ff3800',
+    fontSize: fontSize.small,
+    letterSpacing: 0.1,
   },
 });
