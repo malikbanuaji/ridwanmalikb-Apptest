@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import colors from '../../theme/colors';
 
-export default function ProfileText({firstName, lastName, size, fontSize}) {
+function ProfileText({firstName, lastName, size, fontSize}) {
   return (
     <View
       style={{
@@ -17,6 +17,12 @@ export default function ProfileText({firstName, lastName, size, fontSize}) {
     </View>
   );
 }
+
+ProfileText.defaultProps = {
+  size: 42,
+};
+
+export default ProfileText;
 
 const styles = StyleSheet.create({
   container: {

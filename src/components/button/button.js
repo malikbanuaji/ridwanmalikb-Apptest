@@ -52,6 +52,11 @@ const Button = ({onPress, title, type, disabled}) => {
   );
 };
 
+Button.defaultProps = {
+  type: 'primary',
+  disabled: false,
+};
+
 export default Button;
 
 const styles = StyleSheet.create({

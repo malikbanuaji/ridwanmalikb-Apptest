@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render properly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#36393f",
+      "flexDirection": "row",
+      "minHeight": 80,
+      "paddingHorizontal": 10,
+      "paddingVertical": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginLeft": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontSize": 22,
+          "fontWeight": "700",
+          "letterSpacing": 0.4,
+        }
+      }
+    >
+      Contact
+    </Text>
+  </View>
+  <View />
+</View>
+`;
+
+exports[`should render with right element 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#36393f",
+      "flexDirection": "row",
+      "minHeight": 80,
+      "paddingHorizontal": 10,
+      "paddingVertical": 10,
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <AntDesignIcon
+      color="#ffffff"
+      name="left"
+      onPress={[Function]}
+      size={20}
+      style={
+        Object {
+          "padding": 15,
+        }
+      }
+      testID="HeaderIcon"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginLeft": 0,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontSize": 22,
+          "fontWeight": "700",
+          "letterSpacing": 0.4,
+        }
+      }
+    >
+      Contact
+    </Text>
+  </View>
+  <View>
+    <RightElement />
+  </View>
+</View>
+`;

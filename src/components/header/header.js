@@ -1,18 +1,30 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Pressable} from '../../components';
 import colors from '../../theme/colors';
 import {useNavigation} from '@react-navigation/native';
-import fontSize from '../../typography/fontSize';
 
 const Header = ({title, rightElement, canGoBack}) => {
   const navigation = useNavigation();
+
+  const titleContainerStyle = useMemo(() => {
+    let marginLeft = 10;
+    if (canGoBack) {
+      marginLeft = 0;
+    }
+    return {
+      ...styles.textContainer,
+      marginLeft,
+    };
+  }, [canGoBack]);
+
   return (
     <View style={styles.container}>
       {canGoBack ? (
         <Pressable>
           <Icon
+            testID="HeaderIcon"
             style={styles.backButtonIcon}
             size={20}
             name="left"
@@ -21,7 +33,7 @@ const Header = ({title, rightElement, canGoBack}) => {
           />
         </Pressable>
       ) : null}
-      <View style={[styles.textContainer, {marginLeft: canGoBack ? 0 : 10}]}>
+      <View style={titleContainerStyle}>
         <Text style={styles.headerText}>{title}</Text>
       </View>
       <View>{typeof rightElement === 'function' && rightElement()}</View>
@@ -31,7 +43,7 @@ const Header = ({title, rightElement, canGoBack}) => {
 
 const styles = StyleSheet.create({
   backButtonIcon: {
-    padding: 15
+    padding: 15,
   },
   iconContainer: {
     padding: 5,

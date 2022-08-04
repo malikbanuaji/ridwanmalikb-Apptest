@@ -6,8 +6,8 @@ import colors from '../../theme/colors';
 const ProfilePicture = ({photoUri, size}) => {
   const style = {
     borderRadius: 8,
-    width: size || 42,
-    height: size || 42,
+    width: size,
+    height: size,
   };
   return (
     <>
@@ -23,6 +23,10 @@ const ProfilePicture = ({photoUri, size}) => {
       )}
     </>
   );
+};
+
+ProfilePicture.defaultProps = {
+  size: 42,
 };
 
 export default ProfilePicture;

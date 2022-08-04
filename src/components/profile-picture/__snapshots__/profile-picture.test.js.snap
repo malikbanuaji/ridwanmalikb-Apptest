@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render properly 1`] = `
+<Image
+  source={
+    Object {
+      "uri": "file://uri",
+    }
+  }
+  style={
+    Object {
+      "borderRadius": 8,
+      "height": 42,
+      "width": 42,
+    }
+  }
+/>
+`;
+
+exports[`should render properly without photos 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#99aab5",
+      "borderRadius": 8,
+      "height": 42,
+      "width": 42,
+    }
+  }
+/>
+`;

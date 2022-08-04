@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render properly 1`] = `
+<Modal
+  animationIn="fadeIn"
+  animationInTiming={200}
+  animationOut="fadeOut"
+  backdropColor="#000000"
+  backdropOpacity={0.8}
+  isVisible={false}
+  style={
+    Object {
+      "margin": 0,
+    }
+  }
+  useNativeDriver={true}
+  useNativeDriverForBackdrop={true}
+>
+  <Content />
+</Modal>
+`;
