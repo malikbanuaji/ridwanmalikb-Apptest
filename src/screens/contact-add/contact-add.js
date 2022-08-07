@@ -78,7 +78,7 @@ const ContactAdd = ({navigation}) => {
 
   const _submitUpdateContact = async data => {
     try {
-      // setLoading(true);
+      setLoading(true);
       await contactAPI.updateContact(userId, {
         ...data,
         photo: data.photo ? data.photo : 'N/A',
@@ -89,13 +89,13 @@ const ContactAdd = ({navigation}) => {
     } catch (error) {
       ToastAndroid.show('Failed to update contact', ToastAndroid.SHORT);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
   const _submitAddContact = async data => {
     try {
-      // setLoading(true);
+      setLoading(true);
       await contactAPI.addContact({
         ...data,
         photo: data.photo ? data.photo : 'N/A',
@@ -108,13 +108,13 @@ const ContactAdd = ({navigation}) => {
       console.log(error);
       ToastAndroid.show('Failed to add new contact', ToastAndroid.SHORT);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
   const _deleteContact = async () => {
     try {
-      // setLoading(true);
+      setLoading(true);
       await contactAPI.deleteContact(userId);
       ToastAndroid.show('Contact deleted', ToastAndroid.SHORT);
       dispatch(fetchAllContact());
@@ -122,7 +122,7 @@ const ContactAdd = ({navigation}) => {
     } catch (error) {
       ToastAndroid.show('Failed to delete contact', ToastAndroid.SHORT);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
