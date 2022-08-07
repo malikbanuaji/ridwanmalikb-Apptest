@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render properly 1`] = `
+<View>
+  <Text
+    style={
+      Object {
+        "color": "#99aab5",
+        "fontSize": 14,
+      }
+    }
+  >
+    Label
+  </Text>
+  <TextInput
+    onBlur={[MockFunction]}
+    onChangeText={[MockFunction]}
+    placeholder="Placeholder"
+    placeholderTextColor="#6c757a"
+    style={
+      Object {
+        "borderBottomColor": "#99aab5",
+        "borderBottomWidth": 1,
+        "color": "#ffffff",
+        "fontSize": 16,
+        "paddingHorizontal": 0,
+        "paddingVertical": 5,
+      }
+    }
+    value=""
+  />
+</View>
+`;
+
+exports[`should render properly with error 1`] = `
+<View>
+  <Text
+    style={
+      Object {
+        "color": "#99aab5",
+        "fontSize": 14,
+      }
+    }
+  >
+    Label
+  </Text>
+  <TextInput
+    onBlur={[MockFunction]}
+    onChangeText={[MockFunction]}
+    placeholder="Placeholder"
+    placeholderTextColor="#6c757a"
+    style={
+      Object {
+        "borderBottomColor": "#f57731",
+        "borderBottomWidth": 1,
+        "color": "#ffffff",
+        "fontSize": 16,
+        "paddingHorizontal": 0,
+        "paddingVertical": 5,
+      }
+    }
+    value=""
+  />
+</View>
+`;

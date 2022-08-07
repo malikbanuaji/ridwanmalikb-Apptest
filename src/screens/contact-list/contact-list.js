@@ -6,7 +6,7 @@ import {
   selectAllContact,
 } from '../../features/contact/contactSlice';
 import colors from '../../theme/colors';
-import ContactItem from './contact-item';
+import ContactItem from './components/contact-item';
 
 const ContactList = ({navigation}) => {
   const [loading, setLoading] = useState(false);
@@ -29,15 +29,19 @@ const ContactList = ({navigation}) => {
     fetchContact();
   }, [dispatch]);
 
+  const _handleOnPressItem = ({id, index}) => {
+    navigation.navigate('ContactAdd', {type: 'view', index, id: id});
+  };
+
   const _renderItem = ({item, index}) => {
     return (
       <ContactItem
+        id={item.id}
+        index={index}
         profilePicture={item.photo}
         firstName={item.firstName}
         lastName={item.lastName}
-        onPress={() =>
-          navigation.navigate('ContactAdd', {type: 'view', index, id: item.id})
-        }
+        onPress={_handleOnPressItem}
       />
     );
   };
@@ -45,6 +49,7 @@ const ContactList = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
+        testID="ContactList"
         refreshing={loading}
         onRefresh={_handleOnRefresh}
         contentContainerStyle={styles.flatListContentContainer}

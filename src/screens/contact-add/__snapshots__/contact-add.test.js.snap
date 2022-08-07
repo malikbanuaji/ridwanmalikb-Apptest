@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactAdd test should render properly with add type 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#36393f",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#2f3136",
+            "borderRadius": 8,
+            "marginBottom": 20,
+            "marginHorizontal": 20,
+            "padding": 20,
+          }
+        }
+      >
+        <Controller
+          control="control"
+          name="photo"
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "borderRadius": 8,
+                "height": 130,
+                "justifyContent": "center",
+                "overflow": "hidden",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            >
+              <ProfilePicture
+                photoUri={[MockFunction]}
+                size={130}
+              />
+            </View>
+            <Pressable
+              onPress={[Function]}
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "height": 130,
+                    "justifyContent": "center",
+                    "width": 130,
+                  }
+                }
+              >
+                <AntDesignIcon
+                  color="rgba(255,255,255,0.5)"
+                  name="edit"
+                  size={50}
+                />
+              </View>
+            </Pressable>
+          </View>
+        </Controller>
+        <TextInputController
+          control="control"
+          errors={Object {}}
+          label="First name"
+          name="firstName"
+          placeholder="e.g. John"
+          rules={
+            Object {
+              "maxLength": Object {
+                "message": "Max. length 30",
+                "value": 30,
+              },
+              "minLength": Object {
+                "message": "Min. length 3",
+                "value": 3,
+              },
+              "pattern": Object {
+                "message": "Only alpha-numeric allowed",
+                "value": /\\^\\[A-Za-z0-9\\]\\+\\$/gm,
+              },
+              "required": "This is required",
+            }
+          }
+        />
+        <TextInputController
+          control="control"
+          errors={Object {}}
+          label="Last name"
+          name="lastName"
+          placeholder="e.g. Doe"
+          rules={
+            Object {
+              "maxLength": Object {
+                "message": "Max. length 30",
+                "value": 30,
+              },
+              "minLength": Object {
+                "message": "Min. length 3",
+                "value": 3,
+              },
+              "pattern": Object {
+                "message": "Only alpha-numeric allowed",
+                "value": /\\^\\[A-Za-z0-9\\]\\+\\$/gm,
+              },
+              "required": "This is required",
+            }
+          }
+        />
+        <TextInputController
+          control="control"
+          errors={Object {}}
+          keyboardType="number-pad"
+          label="Age"
+          name="age"
+          placeholder="e.g. 20"
+          rules={
+            Object {
+              "max": Object {
+                "message": "Minimum age is 100",
+                "value": 100,
+              },
+              "min": Object {
+                "message": "Minimum age is 1",
+                "value": 1,
+              },
+              "pattern": Object {
+                "message": "Must be number only",
+                "value": /\\^\\[0-9\\]\\+\\$/gm,
+              },
+              "required": "This is required",
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginHorizontal": 20,
+          }
+        }
+      >
+        <Button
+          disabled={true}
+          onPress={[Function]}
+          title="Add Contact"
+          type="primary"
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`ContactAdd test should render properly with view type 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#36393f",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#2f3136",
+            "borderRadius": 8,
+            "marginBottom": 20,
+            "marginHorizontal": 20,
+            "padding": 20,
+          }
+        }
+      >
+        <Controller
+          control="control"
+          name="photo"
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "borderRadius": 8,
+                "height": 130,
+                "justifyContent": "center",
+                "overflow": "hidden",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            >
+              <ProfilePicture
+                photoUri={[MockFunction]}
+                size={130}
+              />
+            </View>
+            <Pressable
+              onPress={[Function]}
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "height": 130,
+                    "justifyContent": "center",
+                    "width": 130,
+                  }
+                }
+              >
+                <AntDesignIcon
+                  color="rgba(255,255,255,0.5)"
+                  name="edit"
+                  size={50}
+                />
+              </View>
+            </Pressable>
+          </View>
+        </Controller>
+        <TextInputController
+          control="control"
+          errors={Object {}}
+          label="First name"
+          name="firstName"
+          placeholder="e.g. John"
+          rules={
+            Object {
+              "maxLength": Object {
+                "message": "Max. length 30",
+                "value": 30,
+              },
+              "minLength": Object {
+                "message": "Min. length 3",
+                "value": 3,
+              },
+              "pattern": Object {
+                "message": "Only alpha-numeric allowed",
+                "value": /\\^\\[A-Za-z0-9\\]\\+\\$/gm,
+              },
+              "required": "This is required",
+            }
+          }
+        />
+        <TextInputController
+          control="control"
+          errors={Object {}}
+          label="Last name"
+          name="lastName"
+          placeholder="e.g. Doe"
+          rules={
+            Object {
+              "maxLength": Object {
+                "message": "Max. length 30",
+                "value": 30,
+              },
+              "minLength": Object {
+                "message": "Min. length 3",
+                "value": 3,
+              },
+              "pattern": Object {
+                "message": "Only alpha-numeric allowed",
+                "value": /\\^\\[A-Za-z0-9\\]\\+\\$/gm,
+              },
+              "required": "This is required",
+            }
+          }
+        />
+        <TextInputController
+          control="control"
+          errors={Object {}}
+          keyboardType="number-pad"
+          label="Age"
+          name="age"
+          placeholder="e.g. 20"
+          rules={
+            Object {
+              "max": Object {
+                "message": "Minimum age is 100",
+                "value": 100,
+              },
+              "min": Object {
+                "message": "Minimum age is 1",
+                "value": 1,
+              },
+              "pattern": Object {
+                "message": "Must be number only",
+                "value": /\\^\\[0-9\\]\\+\\$/gm,
+              },
+              "required": "This is required",
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginHorizontal": 20,
+          }
+        }
+      >
+        <Button
+          disabled={true}
+          onPress={[Function]}
+          title="Save Contact"
+          type="primary"
+        />
+        <View
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+        >
+          <Button
+            onPress={[Function]}
+            title="Delete Contact"
+            type="danger"
+          />
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

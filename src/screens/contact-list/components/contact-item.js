@@ -1,10 +1,9 @@
 import {View, Text, TouchableHighlight, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
-import colors from '../../theme/colors';
-import {ProfilePicture} from '../../components';
-import fontSize from '../../typography/fontSize';
-import ProfileText from '../../components/profile-picture/profile-text';
+import colors from '../../../theme/colors';
+import {ProfilePicture, ProfileText} from '../../../components';
+import fontSize from '../../../typography/fontSize';
 
 const ContactItem = ({
   onPress,
@@ -12,15 +11,21 @@ const ContactItem = ({
   profilePicture,
   firstName,
   lastName,
+  id,
+  index,
 }) => {
+  const _handleOnPress = () => {
+    onPress && onPress({id, index});
+  };
   return (
     <View>
       <TouchableHighlight
+        testID="ContactItem"
         onLongPress={onLongPress}
         activeOpacity={1}
         underlayColor={'rgba(255,255,255,0.1)'}
         style={styles.button}
-        onPress={onPress}>
+        onPress={_handleOnPress}>
         <View style={styles.content}>
           <View style={styles.profilePicture}>
             {profilePicture === 'N/A' ? (

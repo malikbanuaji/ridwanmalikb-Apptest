@@ -1,12 +1,11 @@
+import * as React from 'react';
 import {useRoute} from '@react-navigation/native';
-import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {
   Alert,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   ToastAndroid,
   View,
 } from 'react-native';
@@ -14,83 +13,15 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useDispatch} from 'react-redux';
 import {contactAPI} from '../../api/client';
-import {Button, Pressable, ProfilePicture} from '../../components';
-import ProfileText from '../../components/profile-picture/profile-text';
+import {Button, Pressable, ProfilePicture, ProfileText} from '../../components';
 import Constants from '../../constants/constants';
 import {fetchAllContact} from '../../features/contact/contactSlice';
 import colors from '../../theme/colors';
 import fontSize from '../../typography/fontSize';
-
-const ErrorMessage = ({name, errors}) => {
-  return (
-    <Text style={styles.errorMessageText}>
-      {errors[name] && errors[name].message}
-    </Text>
-  );
-};
-
-const TextInputEnhanced = ({
-  onBlur,
-  onChangeText,
-  value,
-  label,
-  placeholder,
-  isError,
-}) => {
-  const borderStyle = useMemo(
-    () => (isError ? styles.textInputError : {}),
-    [isError],
-  );
-  return (
-    <View>
-      <Text style={{color: colors.grey, fontSize: fontSize.small}}>
-        {label}
-      </Text>
-      <TextInput
-        style={{...styles.textInput, ...borderStyle}}
-        placeholder={placeholder}
-        placeholderTextColor={'#6c757a'}
-        onBlur={onBlur}
-        onChangeText={onChangeText}
-        value={value}
-      />
-    </View>
-  );
-};
+import TextInputController from './components/text-input-controller';
+import useContactAdd from './hooks/useContactAdd';
 
 const size = 130;
-
-const TextInputController = ({
-  control,
-  errors,
-  name,
-  rules,
-  label,
-  placeholder,
-}) => (
-  <View style={styles.textInputControl}>
-    <Controller
-      name={name}
-      control={control}
-      rules={{
-        ...rules,
-      }}
-      render={({field: {onChange, onBlur, value}}) => (
-        <TextInputEnhanced
-          placeholder={placeholder}
-          label={label}
-          onBlur={onBlur}
-          onChangeText={onChange}
-          value={value}
-          isError={errors[name]}
-        />
-      )}
-    />
-    <View style={styles.errorMessageContainer}>
-      <ErrorMessage name={name} errors={errors} />
-    </View>
-  </View>
-);
 
 const SubmittingBadge = () => (
   <View>
@@ -99,14 +30,20 @@ const SubmittingBadge = () => (
 );
 
 const ContactAdd = ({navigation}) => {
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = React.useState(false);
+  const dispatch = useDispatch();
+
+  const route = useRoute();
+  const userId = route.params?.id;
+  const navigationType = route.params?.type;
+
   const {
     watch,
     control,
     handleSubmit,
     reset,
     setValue,
-    formState: {errors, isValid, isSubmitting},
+    formState: {errors, isValid},
   } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -117,18 +54,13 @@ const ContactAdd = ({navigation}) => {
     },
   });
 
-  const dispatch = useDispatch();
+  useContactAdd({
+    reset,
+    setValue,
+    navigationType,
+    userId,
+  });
 
-  useEffect(() => {
-    setLoading(isSubmitting);
-  }, [isSubmitting]);
-
-  const route = useRoute();
-
-  const contactDetail = useRef();
-
-  const userId = route.params?.id;
-  const navigationType = route.params?.type;
   const {firstName, lastName} = watch();
 
   const _handleOnPressImage = onChange => () => {
@@ -141,26 +73,12 @@ const ContactAdd = ({navigation}) => {
       .then(image => {
         onChange(`data:${image.mime};base64,${image.data}`);
       })
-      .catch(error => console.log(error));
+      .catch(() => {});
   };
 
-  useEffect(() => {
-    if (navigationType === 'view' && userId) {
-      contactAPI.getContact(userId).then(response => {
-        contactDetail.current = response.data.data;
-        reset({
-          firstName: response.data.data.firstName,
-          lastName: response.data.data.lastName,
-          photo: response.data.data.photo,
-        });
-        setValue('age', `${response.data.data.age}`, {shouldValidate: true});
-      });
-    }
-  }, [navigationType, reset, setValue, userId]);
-
   const _submitUpdateContact = async data => {
-    setLoading(true);
     try {
+      // setLoading(true);
       await contactAPI.updateContact(userId, {
         ...data,
         photo: data.photo ? data.photo : 'N/A',
@@ -169,43 +87,42 @@ const ContactAdd = ({navigation}) => {
       dispatch(fetchAllContact());
       navigation.goBack();
     } catch (error) {
-      // ignore error
       ToastAndroid.show('Failed to update contact', ToastAndroid.SHORT);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   const _submitAddContact = async data => {
-    setLoading(true);
     try {
+      // setLoading(true);
       await contactAPI.addContact({
         ...data,
         photo: data.photo ? data.photo : 'N/A',
       });
+      console.log(data);
       ToastAndroid.show('New contact has been added', ToastAndroid.SHORT);
       dispatch(fetchAllContact());
       navigation.goBack();
     } catch (error) {
-      // ignore error
+      console.log(error);
       ToastAndroid.show('Failed to add new contact', ToastAndroid.SHORT);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   const _deleteContact = async () => {
-    setLoading(true);
     try {
+      // setLoading(true);
       await contactAPI.deleteContact(userId);
       ToastAndroid.show('Contact deleted', ToastAndroid.SHORT);
       dispatch(fetchAllContact());
       navigation.goBack();
     } catch (error) {
       ToastAndroid.show('Failed to delete contact', ToastAndroid.SHORT);
-      // ignore error
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -291,6 +208,7 @@ const ContactAdd = ({navigation}) => {
             placeholder="e.g. Doe"
           />
           <TextInputController
+            keyboardType="number-pad"
             rules={{
               required: 'This is required',
               min: {
@@ -422,10 +340,5 @@ const styles = StyleSheet.create({
     fontSize: fontSize.normal,
     color: colors.grey,
     textAlign: 'center',
-  },
-  errorMessageText: {
-    color: '#ff3800',
-    fontSize: fontSize.small,
-    letterSpacing: 0.1,
   },
 });

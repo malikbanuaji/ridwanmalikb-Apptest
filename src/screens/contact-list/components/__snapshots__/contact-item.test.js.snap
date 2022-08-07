@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactItem should render properly with profile 1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0.2)",
+        "borderRadius": 4,
+        "marginBottom": 5,
+        "marginHorizontal": 10,
+        "overflow": "hidden",
+        "paddingHorizontal": 10,
+        "paddingVertical": 10,
+      }
+    }
+    testID="ContactItem"
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "height": 42,
+            "marginRight": 10,
+            "overflow": "hidden",
+            "width": 42,
+          }
+        }
+      >
+        <ProfilePicture
+          photoUri="file://uri"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": 18,
+              "fontWeight": "400",
+              "letterSpacing": 0.2,
+            }
+          }
+        >
+          Malik
+           
+          Banuaji
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+      >
+        <AntDesignIcon
+          color="#ffffff"
+          name="right"
+          size={14}
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ContactItem should render properly without profile 1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0.2)",
+        "borderRadius": 4,
+        "marginBottom": 5,
+        "marginHorizontal": 10,
+        "overflow": "hidden",
+        "paddingHorizontal": 10,
+        "paddingVertical": 10,
+      }
+    }
+    testID="ContactItem"
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "height": 42,
+            "marginRight": 10,
+            "overflow": "hidden",
+            "width": 42,
+          }
+        }
+      >
+        <ProfileText
+          firstName="Malik"
+          fontSize={18}
+          lastName="Banuaji"
+          size={42}
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": 18,
+              "fontWeight": "400",
+              "letterSpacing": 0.2,
+            }
+          }
+        >
+          Malik
+           
+          Banuaji
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+      >
+        <AntDesignIcon
+          color="#ffffff"
+          name="right"
+          size={14}
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

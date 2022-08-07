@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render properly 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": 15,
+    }
+  }
+>
+  <Controller
+    control="control"
+    name="firstName"
+    rules={Object {}}
+  >
+    <FormTextInput
+      isError="firstName"
+      label="label"
+      onChangeText={[MockFunction]}
+      placeholder="placeholder"
+      value={[MockFunction]}
+    />
+  </Controller>
+  <View
+    style={
+      Object {
+        "marginTop": 4,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ff3800",
+          "fontSize": 14,
+          "letterSpacing": 0.1,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`should render properly with error 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": 15,
+    }
+  }
+>
+  <Controller
+    control="control"
+    name="lastName"
+    rules={Object {}}
+  >
+    <FormTextInput
+      label="label"
+      onChangeText={[MockFunction]}
+      placeholder="placeholder"
+      value={[MockFunction]}
+    />
+  </Controller>
+  <View
+    style={
+      Object {
+        "marginTop": 4,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ff3800",
+          "fontSize": 14,
+          "letterSpacing": 0.1,
+        }
+      }
+    />
+  </View>
+</View>
+`;

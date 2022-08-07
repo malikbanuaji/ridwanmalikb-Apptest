@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render negative case 1`] = `
+<Text
+  style={
+    Object {
+      "color": "#ff3800",
+      "fontSize": 14,
+      "letterSpacing": 0.1,
+    }
+  }
+/>
+`;
+
+exports[`should render properly 1`] = `
+<Text
+  style={
+    Object {
+      "color": "#ff3800",
+      "fontSize": 14,
+      "letterSpacing": 0.1,
+    }
+  }
+/>
+`;
